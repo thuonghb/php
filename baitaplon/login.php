@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['user'] = $user['username'];
             header('Location: index.php');
         } else {
-            echo "Sai mật khẩu!";
+            echo "Sai mật khẩu!";123
         }
     } else {
         echo "Tài khoản không tồn tại!";
