@@ -23,6 +23,11 @@
             <li><a href="cart.php">Giỏ Hàng</a></li>
             <li><a href="login.php">Đăng Nhập</a></li>
         </ul>
+        <!-- Thêm ô tìm kiếm vào đây -->
+        <form class="search-form" action="search.php" method="GET">
+            <input type="text" name="query" placeholder="Tìm kiếm...">
+            <button type="submit">🔍</button>
+        </form>
     </nav>
 
     <!-- Left Menu -->
