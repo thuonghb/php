@@ -18,8 +18,8 @@
     <nav class="top-menu">
         <ul>
             <li><a href="index.php">Trang Chủ</a></li>
-            <li><a href="products.php">Sản Phẩm</a></li>
-            <li><a href="contact.php">Liên Hệ</a></li>
+            <li><a href="sanpham.php">Sản Phẩm</a></li>
+            <li><a href="lienhe.php">Liên Hệ</a></li>
             <li><a href="cart.php">Giỏ Hàng</a></li>
             <li><a href="login.php">Đăng Nhập</a></li>
         </ul>

@@ -1,0 +1,85 @@
+/* Reset mặc định của trình duyệt */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Thiết lập chung cho toàn bộ trang */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+/* Banner */
+.banner {
+    background: url('anh/banner.jpg') no-repeat center center/cover;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+.banner h1 {
+font-size: 3em;
+font-weight: bold;
+}
+/* Top Menu */
+.top-menu {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+.top-menu ul {
+    list-style-type: none;
+}
+.top-menu ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+    
+.top-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.top-menu ul li a:hover {
+    color: #f4f4f4;
+    border-bottom: 2px solid #f4f4f4;
+}
+
+.container {
+    line-height: 2.5;
+    margin: 10px auto;
+    padding: 20px;
+    padding-left: 300px;
+
+}
+
+
+
+p {
+    line-height: 1.6;
+    color: #555;
+}
+
+strong {
+    color: #000;
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+
