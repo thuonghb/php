@@ -78,62 +78,51 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form action="login.php" method="post">
+        <form action="" method="post"> <!-- Để cùng trang xử lý, sử dụng action="" -->
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
             <input type="submit" value="Login">
         </form>
-        <p>Don't have an account? <a href="#">Sign up</a></p>
+        <p>Don't have an account? <a href="signup.php">Sign up here</a></p>
         <?php
-        // Kiểm tra nếu người dùng đã gửi form
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Lấy giá trị từ form
+        session_start();
+
+        // Kiểm tra xem yêu cầu là POST
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Kết nối cơ sở dữ liệu
+            include 'ketnoicsdl.php'; // Đảm bảo rằng đường dẫn đúng
+
+            // Lấy dữ liệu từ form
             $username = $_POST['username'];
             $password = $_POST['password'];
 
-            // Tạo tài khoản mẫu (trong thực tế, thông tin này lấy từ cơ sở dữ liệu)
-            $valid_username = 'admin';
-            $valid_password = 'password123';
-
-            // Kiểm tra thông tin đăng nhập
-            if ($username === $valid_username && $password === $valid_password) {
-                $_SESSION['user'] = $user['username'];
-                header('Location: index.php');
-                //echo 'Login successful! Welcome, ' . htmlspecialchars($username);
+            // Truy vấn cơ sở dữ liệu để kiểm tra tên người dùng và mật khẩu
+            $sql = "SELECT * FROM users WHERE username='$username'";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                $user = $result->fetch_assoc();
+                if ($user['password'] == $password) { // So sánh mật khẩu
+                    $_SESSION['user'] = $user['username']; // Lưu tên người dùng vào phiên
+                    header('Location: index.php'); // Chuyển hướng đến trang chính
+                    exit; // Kết thúc script
+                } else {
+                    echo "Sai mật khẩu!";
+                }
             } else {
-                echo 'Invalid username or password.';
+                echo "Tài khoản không tồn tại!";
             }
+
+            // Đóng kết nối
+            $conn->close();
+        }
+
+        // Hiển thị thông báo thành công nếu có
+        if (isset($_GET['success'])) {
+            echo "<p>Đăng ký thành công! Bạn có thể đăng nhập ngay.</p>";
         }
         ?>
     </div>
-    <!-- <?php
-session_start();
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    include 'php/db_connection.php';
-
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $sql = "SELECT * FROM users WHERE username='$username'";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        $user = $result->fetch_assoc();
-        if (password_verify($password, $user['password'])) {
-            $_SESSION['user'] = $user['username'];
-            header('Location: index.php');
-        } else {
-            echo "Sai mật khẩu!";
-        }
-    } else {
-        echo "Tài khoản không tồn tại!";
-    }
-
-    $conn->close();
-}
-?> -->
-
 </body>
 </html>
