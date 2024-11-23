@@ -100,15 +100,15 @@ class userModel
             $mail->SMTPSecure = "tls";
             $mail->Port       = 587;
             $mail->Host       = "smtp.gmail.com";
-            $mail->username   = "trannganttn2001@gmail.com";
+            $mail->username   = "tienthuongpham@gmail.com";
             $mail->Password   = "12345678";
 
             $mail->IsHTML(true);
             $mail->CharSet = 'UTF-8';
             $mail->AddAddress($email, "recipient-name");
-            $mail->SetFrom("trannganttn2001@gmail.com", "NGAN'S STORE");
-            $mail->Subject = "Xác nhận email tài khoản - NGAN'S STORE";
-            $mail->Body = "<h3>Cảm ơn bạn đã đăng ký tài khoản tại website NGAN'S STORE</h3></br>Đây là mã xác minh tài khoản của bạn: " . $captcha . "";
+            $mail->SetFrom("tienthuongpham@gmail.com", "NHÓM 10 STORE");
+            $mail->Subject = "Xác nhận email tài khoản - NHÓM 10 STORE";
+            $mail->Body = "<h3>Cảm ơn bạn đã đăng ký tài khoản tại website NHÓM 10 STORE</h3></br>Đây là mã xác minh tài khoản của bạn: " . $captcha . "";
 
             $mail->Send();
 

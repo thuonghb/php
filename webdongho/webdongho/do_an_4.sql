@@ -1,11 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 14, 2023 lúc 06:37 AM
--- Phiên bản máy phục vụ: 10.4.22-MariaDB
--- Phiên bản PHP: 7.4.27
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -17,13 +10,13 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Cơ sở dữ liệu: `blog`
---
+
 -- --------------------------------------------------------
+
 --
--- Cấu trúc bảng cho bảng `blog`
+-- Table structure for table `blog`
 --
+
 CREATE TABLE `blog` (
   `id` int(11) NOT NULL,
   `title` varchar(500) NOT NULL,
@@ -36,16 +29,14 @@ CREATE TABLE `blog` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `blog`
+-- Dumping data for table `blog`
 --
 
-INSERT INTO `blog` (`id`, `title`, `content`, `image`, `userId`, `createdDate`, `lastUpdated`, `views`) VALUES
-(7, 'dd', '<p>Viết nội dung tại đddddddddddây...</p>', 'bf103d5052.png', 1, '2023-04-12 22:07:44', '2023-04-12 22:07:44', 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `cart`
+-- Table structure for table `cart`
 --
 
 CREATE TABLE `cart` (
@@ -61,7 +52,7 @@ CREATE TABLE `cart` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -71,21 +62,355 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `categories`
+-- Dumping data for table `categories`
 --
-
 INSERT INTO `categories` (`id`, `name`, `status`) VALUES
 (1, 'Đồng hồ nam', 1),
 (2, 'Đồng hồ nữ', 1),
-(3, 'Đồng hồ cặp', 1),  
-(4, 'Đồng hồ treo tường', 1),
-(24, 'Bảo Quốc', 1),
-(25, 'Anthony', 1);
+(3, 'Đồng hồ cặp', 1),
+(4, 'Đồng hồ treo tường', 1);
+
+
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `district`
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `originalPrice` decimal(10,0) NOT NULL,
+  `promotionPrice` decimal(10,0) NOT NULL,
+  `image` varchar(50) NOT NULL,
+  `createdBy` int(11) NOT NULL,
+  `createdDate` date NOT NULL,
+  `cateId` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `mota`varchar(255) NOT NULL,
+  `trademark`varchar(55) NOT NULL,
+  `faceshape`varchar(55) NOT NULL,
+  `material`varchar(55) NOT NULL,
+  `color`varchar(55) NOT NULL,
+  `energyused`varchar(55) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `soldCount` int(11) NOT NULL,
+  `image2` varchar(100) NOT NULL,
+  `image3` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `originalPrice`, `promotionPrice`, `image`, `createdBy`, `createdDate`, `cateId`, `qty`, `mota`,`trademark`,`faceshape`,  `material`,`color`,`energyused`,`status`, `soldCount`, `image2`, `image3`) VALUES
+(1,'CASIO MTP-1370D-7A2VDF','1607000','1607000','MTP-1370D-7A2VDF.jpg',1,'2023-02-10',1,20,'Từ những chiếc kim có kích thước lớn cho đến dây đeo bằng thép bóng bẩy, Alliance cân bằng một cách chuyên nghiệp giữa độ chính xác và tính thẩm mỹ. Cung cấp khả năng đọc rõ ràng và chất lượng do Thụy Sĩ sản xuất, đây chính là một chiếc đồng hồ nâng tầm cuộc sống hàng ngày của bạn lên một tầm cao mới. Tự hào với vẻ ngoài tối giản, đậm chất doanh nhân và sự thoải mái tối ưu khi đeo, đồng hồ Alliance chính là người bạn đồng hành thú vị!','Casio','Tròn','Thép không gỉ','Vàng, Trắng','Cơ',1,0,'CASIO-MTP-1370D-7A2VDF-1-699x699.jpg','CASIO-MTP-1370D-7A2VDF-0-699x699.jpg'),
+(2,'Đồng hồ CASIO','1607000','1607000','MTP-1370D-7A2VDF.jpg',1,'2023-02-10',1,20,'Từ những chiếc kim có kích thước lớn cho đến dây đeo bằng thép bóng bẩy, Alliance cân bằng một cách chuyên nghiệp giữa độ chính xác và tính thẩm mỹ. Cung cấp khả năng đọc rõ ràng và chất lượng do Thụy Sĩ sản xuất, đây chính là một chiếc đồng hồ nâng tầm cuộc sống hàng ngày của bạn lên một tầm cao mới. Tự hào với vẻ ngoài tối giản, đậm chất doanh nhân và sự thoải mái tối ưu khi đeo, đồng hồ Alliance chính là người bạn đồng hành thú vị!','Casio','Tròn','Thép không gỉ','Trắng','Cơ',1,0,'CASIO-MTP-1370D-7A2VDF-1-699x699.jpg','CASIO-MTP-1370D-7A2VDF-0-699x699.jpg');
+-- --------------------------------------------------------
+--
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL,
+  `fromUserId` int(11) NOT NULL,
+  `toUserId` int(11) NOT NULL,
+  `content` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `messages`
+--
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` varchar(50) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `createdDate` date NOT NULL,
+  `receivedDate` date DEFAULT NULL,
+  `status` varchar(20) NOT NULL,
+  `paymentStatus` tinyint(1) NOT NULL,
+  `paymentMethod` varchar(10) NOT NULL,
+  `payDate` datetime DEFAULT NULL,
+  `total` decimal(10,0) NOT NULL,
+  `discount` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_details`
+--
+
+CREATE TABLE `order_details` (
+  `id` int(11) NOT NULL,
+  `orderId` varchar(50) NOT NULL,
+  `productId` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `productPrice` decimal(10,0) NOT NULL,
+  `productName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_details`
+--
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `productfavorite`
+--
+
+CREATE TABLE `productfavorite` (
+  `id` int(11) NOT NULL,
+  `productId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `productfavorite`
+--
+
+INSERT INTO `productfavorite` (`id`, `productId`, `userId`) VALUES
+(1, 1, 1),
+(3, 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `productrating`
+--
+
+CREATE TABLE `productrating` (
+  `id` int(11) NOT NULL,
+  `productId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `star` int(11) NOT NULL,
+  `content` text NOT NULL,
+  `reply` text NOT NULL,
+  `createdDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `repliedDate` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `productrating`
+--
+INSERT INTO `productrating` (`id`, `productId`, `userId`, `star`, `content`, `reply`, `createdDate`, `repliedDate`) VALUES
+(1, 1, 1, 1, 'sản phẩm tốt', 'cảm ơn bạn', '2023-03-09 09:30:09', '2022-05-09 10:46:09');
+
+
+--
+-- Table structure for table `question`
+--
+
+CREATE TABLE `question` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `content` varchar(500) NOT NULL,
+  `reply` varchar(500) NOT NULL,
+  `createdDate` datetime NOT NULL,
+  `repliedDate` datetime DEFAULT NULL,
+  `productId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `question`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role`
+--
+
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `role`
+--
+
+INSERT INTO `role` (`id`, `name`) VALUES
+(1, 'Admin'),
+(2, 'User ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `fullName` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `dob` date NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `roleId` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `captcha` varchar(50) NOT NULL,
+  `isConfirmed` tinyint(4) NOT NULL DEFAULT 0,
+  `phone` varchar(10) NOT NULL,
+  `provinceId` varchar(5) CHARACTER SET utf8 NOT NULL,
+  `districtId` varchar(5) CHARACTER SET utf8 NOT NULL,
+  `wardId` varchar(5) CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `fullName`, `email`, `dob`, `address`, `password`, `roleId`, `status`, `captcha`, `isConfirmed`, `phone`, `provinceId`, `districtId`, `wardId`) VALUES
+(1, 'Admin', 'admin@gmail.com', '2022-03-08', 'Đà Nẵng', '202cb962ac59075b964b07152d234b70', 1, 1, '930819', 1, '123456', '01', '001', '00001'),
+(2, 'Trần Ngân', 'ttn@gmail.com', '2006-02-08', 'Đà Nẵng', '202cb962ac59075b964b07152d234b70', 2, 1, '123', 1, '987654321', '92', '916', '31141');
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_voucher`
+--
+
+CREATE TABLE `user_voucher` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `voucherId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_voucher`
+--
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vouchers`
+--
+
+CREATE TABLE `vouchers` (
+  `id` int(11) NOT NULL,
+  `percentDiscount` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `code` varchar(10) NOT NULL,
+  `expirationDate` datetime NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `usedCount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vouchers`
+--
+
+
+-- --------------------------------------------------------
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `province`
+--
+
+CREATE TABLE `province` (
+  `id` varchar(5) CHARACTER SET utf8 NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `type` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `slug` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `province`
+--
+
+INSERT INTO `province` (`id`, `name`, `type`, `slug`) VALUES
+('01', 'Thành phố Hà Nội', 'Thành phố Trung ương', 'HANOI'),
+('02', 'Tỉnh Hà Giang', 'Tỉnh', 'HAGIANG'),
+('04', 'Tỉnh Cao Bằng', 'Tỉnh', 'CAOBANG'),
+('06', 'Tỉnh Bắc Kạn', 'Tỉnh', 'BACKAN'),
+('08', 'Tỉnh Tuyên Quang', 'Tỉnh', 'TUYENQUANG'),
+('10', 'Tỉnh Lào Cai', 'Tỉnh', 'LAOCAI'),
+('11', 'Tỉnh Điện Biên', 'Tỉnh', 'DIENBIEN'),
+('12', 'Tỉnh Lai Châu', 'Tỉnh', 'LAICHAU'),
+('14', 'Tỉnh Sơn La', 'Tỉnh', 'SONLA'),
+('15', 'Tỉnh Yên Bái', 'Tỉnh', 'YENBAI'),
+('17', 'Tỉnh Hoà Bình', 'Tỉnh', 'HOABINH'),
+('19', 'Tỉnh Thái Nguyên', 'Tỉnh', 'THAINGUYEN'),
+('20', 'Tỉnh Lạng Sơn', 'Tỉnh', 'LANGSON'),
+('22', 'Tỉnh Quảng Ninh', 'Tỉnh', 'QUANGNINH'),
+('24', 'Tỉnh Bắc Giang', 'Tỉnh', 'BACGIANG'),
+('25', 'Tỉnh Phú Thọ', 'Tỉnh', 'PHUTHO'),
+('26', 'Tỉnh Vĩnh Phúc', 'Tỉnh', 'VINHPHUC'),
+('27', 'Tỉnh Bắc Ninh', 'Tỉnh', 'BACNINH'),
+('30', 'Tỉnh Hải Dương', 'Tỉnh', 'HAIDUONG'),
+('31', 'Thành phố Hải Phòng', 'Thành phố Trung ương', 'HAIPHONG'),
+('33', 'Tỉnh Hưng Yên', 'Tỉnh', 'HUNGYEN'),
+('34', 'Tỉnh Thái Bình', 'Tỉnh', 'THAIBINH'),
+('35', 'Tỉnh Hà Nam', 'Tỉnh', 'HANAM'),
+('36', 'Tỉnh Nam Định', 'Tỉnh', 'NAMDINH'),
+('37', 'Tỉnh Ninh Bình', 'Tỉnh', 'NINHBINH'),
+('38', 'Tỉnh Thanh Hóa', 'Tỉnh', 'THANHHOA'),
+('40', 'Tỉnh Nghệ An', 'Tỉnh', 'NGHEAN'),
+('42', 'Tỉnh Hà Tĩnh', 'Tỉnh', 'HATINH'),
+('44', 'Tỉnh Quảng Bình', 'Tỉnh', 'QUANGBINH'),
+('45', 'Tỉnh Quảng Trị', 'Tỉnh', 'QUANGTRI'),
+('46', 'Tỉnh Thừa Thiên Huế', 'Tỉnh', 'THUATHIENHUE'),
+('48', 'Thành phố Đà Nẵng', 'Thành phố Trung ương', 'DANANG'),
+('49', 'Tỉnh Quảng Nam', 'Tỉnh', 'QUANGNAM'),
+('51', 'Tỉnh Quảng Ngãi', 'Tỉnh', 'QUANGNGAI'),
+('52', 'Tỉnh Bình Định', 'Tỉnh', 'BINHDINH'),
+('54', 'Tỉnh Phú Yên', 'Tỉnh', 'PHUYEN'),
+('56', 'Tỉnh Khánh Hòa', 'Tỉnh', 'KHANHHOA'),
+('58', 'Tỉnh Ninh Thuận', 'Tỉnh', 'NINHTHUAN'),
+('60', 'Tỉnh Bình Thuận', 'Tỉnh', 'BINHTHUAN'),
+('62', 'Tỉnh Kon Tum', 'Tỉnh', 'KONTUM'),
+('64', 'Tỉnh Gia Lai', 'Tỉnh', 'GIALAI'),
+('66', 'Tỉnh Đắk Lắk', 'Tỉnh', 'DAKLAK'),
+('67', 'Tỉnh Đắk Nông', 'Tỉnh', 'DAKNONG'),
+('68', 'Tỉnh Lâm Đồng', 'Tỉnh', 'LAMDONG'),
+('70', 'Tỉnh Bình Phước', 'Tỉnh', 'BINHPHUOC'),
+('72', 'Tỉnh Tây Ninh', 'Tỉnh', 'TAYNINH'),
+('74', 'Tỉnh Bình Dương', 'Tỉnh', 'BINHDUONG'),
+('75', 'Tỉnh Đồng Nai', 'Tỉnh', 'DONGNAI'),
+('77', 'Tỉnh Bà Rịa - Vũng Tàu', 'Tỉnh', 'BARIAVUNGTAU'),
+('79', 'Thành phố Hồ Chí Minh', 'Thành phố Trung ương', 'HOCHIMINH'),
+('80', 'Tỉnh Long An', 'Tỉnh', 'LONGAN'),
+('82', 'Tỉnh Tiền Giang', 'Tỉnh', 'TIENGIANG'),
+('83', 'Tỉnh Bến Tre', 'Tỉnh', 'BENTRE'),
+('84', 'Tỉnh Trà Vinh', 'Tỉnh', 'TRAVINH'),
+('86', 'Tỉnh Vĩnh Long', 'Tỉnh', 'VINHLONG'),
+('87', 'Tỉnh Đồng Tháp', 'Tỉnh', 'DONGTHAP'),
+('89', 'Tỉnh An Giang', 'Tỉnh', 'ANGIANG'),
+('91', 'Tỉnh Kiên Giang', 'Tỉnh', 'KIENGIANG'),
+('92', 'Thành phố Cần Thơ', 'Thành phố Trung ương', 'CANTHO'),
+('93', 'Tỉnh Hậu Giang', 'Tỉnh', 'HAUGIANG'),
+('94', 'Tỉnh Sóc Trăng', 'Tỉnh', 'SOCTRANG'),
+('95', 'Tỉnh Bạc Liêu', 'Tỉnh', 'BACLIEU'),
+('96', 'Tỉnh Cà Mau', 'Tỉnh', 'CAMAU');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `district`
 --
 
 CREATE TABLE `district` (
@@ -96,9 +421,8 @@ CREATE TABLE `district` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `district`
+-- Dumping data for table `district`
 --
-
 INSERT INTO `district` (`id`, `name`, `type`, `provinceId`) VALUES
 ('001', 'Quận Ba Đình', 'Quận', '01'),
 ('002', 'Quận Hoàn Kiếm', 'Quận', '01'),
@@ -809,344 +1133,7 @@ INSERT INTO `district` (`id`, `name`, `type`, `provinceId`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `messages`
---
-
-CREATE TABLE `messages` (
-  `id` int(11) NOT NULL,
-  `fromUserId` int(11) NOT NULL,
-  `toUserId` int(11) NOT NULL,
-  `content` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `orders`
---
-
-CREATE TABLE `orders` (
-  `id` varchar(50) NOT NULL,
-  `userId` int(11) NOT NULL,
-  `createdDate` date NOT NULL,
-  `receivedDate` date DEFAULT NULL,
-  `status` varchar(20) NOT NULL,
-  `paymentStatus` tinyint(1) NOT NULL,
-  `paymentMethod` varchar(10) NOT NULL,
-  `payDate` datetime DEFAULT NULL,
-  `total` decimal(10,0) NOT NULL,
-  `discount` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `orders`
---
-
-INSERT INTO `orders` (`id`, `userId`, `createdDate`, `receivedDate`, `status`, `paymentStatus`, `paymentMethod`, `payDate`, `total`, `discount`) VALUES
-('DH-B3KJLTL5AW', 158, '2023-04-13', '2023-04-13', 'received', 1, 'COD', '2023-04-13 10:22:48', '3214000', 0),
-('DH-MGG2HPYD1J', 171, '2023-04-13', '2023-04-13', 'received', 1, 'COD', '2023-04-13 23:49:53', '22', 0);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `order_details`
---
-
-CREATE TABLE `order_details` (
-  `id` int(11) NOT NULL,
-  `orderId` varchar(50) NOT NULL,
-  `productId` int(11) NOT NULL,
-  `qty` int(11) NOT NULL,
-  `productPrice` decimal(10,0) NOT NULL,
-  `productName` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `order_details`
---
-
-INSERT INTO `order_details` (`id`, `orderId`, `productId`, `qty`, `productPrice`, `productName`) VALUES
-(181, 'DH-MGG2HPYD1J', 124, 1, '22', 'Bảo Quốc');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `productfavorite`
---
-
-CREATE TABLE `productfavorite` (
-  `id` int(11) NOT NULL,
-  `productId` int(11) NOT NULL,
-  `userId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `productrating`
---
-
-CREATE TABLE `productrating` (
-  `id` int(11) NOT NULL,
-  `productId` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
-  `star` int(11) NOT NULL,
-  `content` text NOT NULL,
-  `reply` text NOT NULL,
-  `createdDate` datetime NOT NULL DEFAULT current_timestamp(),
-  `repliedDate` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `productrating`
---
-
-INSERT INTO `productrating` (`id`, `productId`, `userId`, `star`, `content`, `reply`, `createdDate`, `repliedDate`) VALUES
-(1, 1, 1, 1, 'sản phẩm tốt', 'cảm ơn bạn', '2023-03-09 09:30:09', '2022-05-09 10:46:09'),
-(10, 1, 158, 4, 'hay', 'cảm ơn bạn', '2023-04-13 10:23:41', '2023-04-13 23:50:49'),
-(11, 124, 171, 5, 'Hay quá bạn ơi, quá xịn', 'xịn', '2023-04-13 23:50:09', '2023-04-13 23:50:39');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `products`
---
-
-CREATE TABLE `products` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `originalPrice` decimal(10,0) NOT NULL,
-  `promotionPrice` decimal(10,0) NOT NULL,
-  `image` varchar(50) NOT NULL,
-  `createdBy` int(11) NOT NULL,
-  `createdDate` date NOT NULL,
-  `cateId` int(11) NOT NULL,
-  `qty` int(11) NOT NULL,
-  `mota` varchar(255) NOT NULL,
-  `trademark` varchar(55) NOT NULL,
-  `faceshape` varchar(55) NOT NULL,
-  `material` varchar(55) NOT NULL,
-  `color` varchar(55) NOT NULL,
-  `energyused` varchar(55) NOT NULL,
-  `status` tinyint(1) NOT NULL,
-  `soldCount` int(11) NOT NULL,
-  `image2` varchar(100) NOT NULL,
-  `image3` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `products`
---
-
-INSERT INTO `products` (`id`, `name`, `originalPrice`, `promotionPrice`, `image`, `createdBy`, `createdDate`, `cateId`, `qty`, `mota`, `trademark`, `faceshape`, `material`, `color`, `energyused`, `status`, `soldCount`, `image2`, `image3`) VALUES
-(1, 'CASIO MTP-1370D-7A2VDF', '1607000', '1607000', 'MTP-1370D-7A2VDF.jpg', 1, '2023-02-10', 1, 17, 'Từ những chiếc kim có kích thước lớn cho đến dây đeo bằng thép bóng bẩy, Alliance cân bằng một cách chuyên nghiệp giữa độ chính xác và tính thẩm mỹ. Cung cấp khả năng đọc rõ ràng và chất lượng do Thụy Sĩ sản xuất, đây chính là một chiếc đồng hồ nâng tầm c', 'Casio', 'Tròn', 'Thép không gỉ', 'Vàng, Trắng', 'Cơ', 1, 3, 'CASIO-MTP-1370D-7A2VDF-1-699x699.jpg', 'CASIO-MTP-1370D-7A2VDF-0-699x699.jpg'),
-(2, 'Đồng hồ CASIO', '1607000', '1607000', 'MTP-1370D-7A2VDF.jpg', 1, '2023-02-10', 1, 17, 'Từ những chiếc kim có kích thước lớn cho đến dây đeo bằng thép bóng bẩy, Alliance cân bằng một cách chuyên nghiệp giữa độ chính xác và tính thẩm mỹ. Cung cấp khả năng đọc rõ ràng và chất lượng do Thụy Sĩ sản xuất, đây chính là một chiếc đồng hồ nâng tầm c', 'Casio', 'Tròn', 'Thép không gỉ', 'Trắng', 'Cơ', 1, 3, 'CASIO-MTP-1370D-7A2VDF-1-699x699.jpg', 'CASIO-MTP-1370D-7A2VDF-0-699x699.jpg'),
-(124, 'Bảo Quốc', '222222', '22', '5f03fca768.jpg', 1, '2023-04-13', 1, 221, '', '22', '2', '2', '2', '2', 1, 1, '331ce1a314.jpg', '5cd87517ce.jpg'),
-(125, 'ĐỒNG HỒ NAM XỊN', '22222', '22', 'db61f90c29.jpg', 1, '2023-04-13', 3, 222, '', '22', '2', '2', '2', '2', 1, 0, 'eafb3dd5ff.jpg', '1c82a0874f.jpg'),
-(126, 'Anthony', '100000', '2000', '613298437b.jpg', 1, '2023-04-13', 1, 1, '', '1', '1', '1', '1', '1', 1, 0, '13941a9b0b.jpg', '92ab3f6d7f.jpg');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `province`
---
-
-CREATE TABLE `province` (
-  `id` varchar(5) CHARACTER SET utf8 NOT NULL,
-  `name` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `type` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `slug` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
-
---
--- Đang đổ dữ liệu cho bảng `province`
---
-
-INSERT INTO `province` (`id`, `name`, `type`, `slug`) VALUES
-('01', 'Thành phố Hà Nội', 'Thành phố Trung ương', 'HANOI'),
-('02', 'Tỉnh Hà Giang', 'Tỉnh', 'HAGIANG'),
-('04', 'Tỉnh Cao Bằng', 'Tỉnh', 'CAOBANG'),
-('06', 'Tỉnh Bắc Kạn', 'Tỉnh', 'BACKAN'),
-('08', 'Tỉnh Tuyên Quang', 'Tỉnh', 'TUYENQUANG'),
-('10', 'Tỉnh Lào Cai', 'Tỉnh', 'LAOCAI'),
-('11', 'Tỉnh Điện Biên', 'Tỉnh', 'DIENBIEN'),
-('12', 'Tỉnh Lai Châu', 'Tỉnh', 'LAICHAU'),
-('14', 'Tỉnh Sơn La', 'Tỉnh', 'SONLA'),
-('15', 'Tỉnh Yên Bái', 'Tỉnh', 'YENBAI'),
-('17', 'Tỉnh Hoà Bình', 'Tỉnh', 'HOABINH'),
-('19', 'Tỉnh Thái Nguyên', 'Tỉnh', 'THAINGUYEN'),
-('20', 'Tỉnh Lạng Sơn', 'Tỉnh', 'LANGSON'),
-('22', 'Tỉnh Quảng Ninh', 'Tỉnh', 'QUANGNINH'),
-('24', 'Tỉnh Bắc Giang', 'Tỉnh', 'BACGIANG'),
-('25', 'Tỉnh Phú Thọ', 'Tỉnh', 'PHUTHO'),
-('26', 'Tỉnh Vĩnh Phúc', 'Tỉnh', 'VINHPHUC'),
-('27', 'Tỉnh Bắc Ninh', 'Tỉnh', 'BACNINH'),
-('30', 'Tỉnh Hải Dương', 'Tỉnh', 'HAIDUONG'),
-('31', 'Thành phố Hải Phòng', 'Thành phố Trung ương', 'HAIPHONG'),
-('33', 'Tỉnh Hưng Yên', 'Tỉnh', 'HUNGYEN'),
-('34', 'Tỉnh Thái Bình', 'Tỉnh', 'THAIBINH'),
-('35', 'Tỉnh Hà Nam', 'Tỉnh', 'HANAM'),
-('36', 'Tỉnh Nam Định', 'Tỉnh', 'NAMDINH'),
-('37', 'Tỉnh Ninh Bình', 'Tỉnh', 'NINHBINH'),
-('38', 'Tỉnh Thanh Hóa', 'Tỉnh', 'THANHHOA'),
-('40', 'Tỉnh Nghệ An', 'Tỉnh', 'NGHEAN'),
-('42', 'Tỉnh Hà Tĩnh', 'Tỉnh', 'HATINH'),
-('44', 'Tỉnh Quảng Bình', 'Tỉnh', 'QUANGBINH'),
-('45', 'Tỉnh Quảng Trị', 'Tỉnh', 'QUANGTRI'),
-('46', 'Tỉnh Thừa Thiên Huế', 'Tỉnh', 'THUATHIENHUE'),
-('48', 'Thành phố Đà Nẵng', 'Thành phố Trung ương', 'DANANG'),
-('49', 'Tỉnh Quảng Nam', 'Tỉnh', 'QUANGNAM'),
-('51', 'Tỉnh Quảng Ngãi', 'Tỉnh', 'QUANGNGAI'),
-('52', 'Tỉnh Bình Định', 'Tỉnh', 'BINHDINH'),
-('54', 'Tỉnh Phú Yên', 'Tỉnh', 'PHUYEN'),
-('56', 'Tỉnh Khánh Hòa', 'Tỉnh', 'KHANHHOA'),
-('58', 'Tỉnh Ninh Thuận', 'Tỉnh', 'NINHTHUAN'),
-('60', 'Tỉnh Bình Thuận', 'Tỉnh', 'BINHTHUAN'),
-('62', 'Tỉnh Kon Tum', 'Tỉnh', 'KONTUM'),
-('64', 'Tỉnh Gia Lai', 'Tỉnh', 'GIALAI'),
-('66', 'Tỉnh Đắk Lắk', 'Tỉnh', 'DAKLAK'),
-('67', 'Tỉnh Đắk Nông', 'Tỉnh', 'DAKNONG'),
-('68', 'Tỉnh Lâm Đồng', 'Tỉnh', 'LAMDONG'),
-('70', 'Tỉnh Bình Phước', 'Tỉnh', 'BINHPHUOC'),
-('72', 'Tỉnh Tây Ninh', 'Tỉnh', 'TAYNINH'),
-('74', 'Tỉnh Bình Dương', 'Tỉnh', 'BINHDUONG'),
-('75', 'Tỉnh Đồng Nai', 'Tỉnh', 'DONGNAI'),
-('77', 'Tỉnh Bà Rịa - Vũng Tàu', 'Tỉnh', 'BARIAVUNGTAU'),
-('79', 'Thành phố Hồ Chí Minh', 'Thành phố Trung ương', 'HOCHIMINH'),
-('80', 'Tỉnh Long An', 'Tỉnh', 'LONGAN'),
-('82', 'Tỉnh Tiền Giang', 'Tỉnh', 'TIENGIANG'),
-('83', 'Tỉnh Bến Tre', 'Tỉnh', 'BENTRE'),
-('84', 'Tỉnh Trà Vinh', 'Tỉnh', 'TRAVINH'),
-('86', 'Tỉnh Vĩnh Long', 'Tỉnh', 'VINHLONG'),
-('87', 'Tỉnh Đồng Tháp', 'Tỉnh', 'DONGTHAP'),
-('89', 'Tỉnh An Giang', 'Tỉnh', 'ANGIANG'),
-('91', 'Tỉnh Kiên Giang', 'Tỉnh', 'KIENGIANG'),
-('92', 'Thành phố Cần Thơ', 'Thành phố Trung ương', 'CANTHO'),
-('93', 'Tỉnh Hậu Giang', 'Tỉnh', 'HAUGIANG'),
-('94', 'Tỉnh Sóc Trăng', 'Tỉnh', 'SOCTRANG'),
-('95', 'Tỉnh Bạc Liêu', 'Tỉnh', 'BACLIEU'),
-('96', 'Tỉnh Cà Mau', 'Tỉnh', 'CAMAU');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `question`
---
-
-CREATE TABLE `question` (
-  `id` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
-  `content` varchar(500) NOT NULL,
-  `reply` varchar(500) NOT NULL,
-  `createdDate` datetime NOT NULL,
-  `repliedDate` datetime DEFAULT NULL,
-  `productId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `role`
---
-
-CREATE TABLE `role` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `role`
---
-
-INSERT INTO `role` (`id`, `name`) VALUES
-(1, 'Admin'),
-(2, 'User ');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `fullName` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `dob` date NOT NULL,
-  `address` varchar(500) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `roleId` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL,
-  `captcha` varchar(50) NOT NULL,
-  `isConfirmed` tinyint(4) NOT NULL DEFAULT 0,
-  `phone` varchar(10) NOT NULL,
-  `provinceId` varchar(5) CHARACTER SET utf8 NOT NULL,
-  `districtId` varchar(5) CHARACTER SET utf8 NOT NULL,
-  `wardId` varchar(5) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `users`
---
-
-INSERT INTO `users` (`id`, `fullName`, `email`, `dob`, `address`, `password`, `roleId`, `status`, `captcha`, `isConfirmed`, `phone`, `provinceId`, `districtId`, `wardId`) VALUES
-(1, 'Admin', 'admin@gmail.com', '2022-03-08', 'Đà Nẵng', '202cb962ac59075b964b07152d234b70', 1, 1, '930819', 1, '123456', '01', '001', '00001'),
-(2, 'Trần Ngân', 'ttn@gmail.com', '2006-02-08', 'Đà Nẵng', '202cb962ac59075b964b07152d234b70', 2, 1, '123', 1, '987654321', '92', '916', '31141'),
-(158, 'Bảo Quốc', 'baoquocnguyenkinh@gmail.com', '2000-09-20', 'Nghệ An', '202cb962ac59075b964b07152d234b70', 2, 1, '50197', 1, '', '40', '419', '16960'),
-(170, 'Bảo Anthony', 'quocb4250@gmail.com', '2000-09-22', 'Nghệ An', '202cb962ac59075b964b07152d234b70', 2, 1, '37072', 1, '', '40', '416', '16786'),
-(171, 'Anthony', 'anthony@gmail.com', '1997-09-22', 'Nghệ An', '202cb962ac59075b964b07152d234b70', 2, 1, '53698', 1, '', '40', '412', '16705'),
-(172, 'Anthony', 'user3@gmail.com', '1997-02-02', 'Nghệ An', '202cb962ac59075b964b07152d234b70', 2, 1, '30980', 1, '', '40', '412', '16696');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `user_voucher`
---
-
-CREATE TABLE `user_voucher` (
-  `id` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
-  `voucherId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `user_voucher`
---
-
-INSERT INTO `user_voucher` (`id`, `userId`, `voucherId`) VALUES
-(5, 1, 8);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `vouchers`
---
-
-CREATE TABLE `vouchers` (
-  `id` int(11) NOT NULL,
-  `percentDiscount` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `code` varchar(10) NOT NULL,
-  `expirationDate` datetime NOT NULL,
-  `status` tinyint(1) NOT NULL,
-  `usedCount` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `vouchers`
---
-
-INSERT INTO `vouchers` (`id`, `percentDiscount`, `quantity`, `code`, `expirationDate`, `status`, `usedCount`) VALUES
-(8, 10, 100, 'CDffff', '2023-09-22 00:00:00', 1, 1),
-(9, 20, 10, 'OFF20%', '2023-04-15 00:00:00', 1, 0),
-(10, 50, 12, 'Code20', '2023-04-15 00:00:00', 1, 0),
-(11, 50, 12, 'Code20', '2023-04-15 00:00:00', 1, 0),
-(12, 30, 12, 'Code30', '2023-04-15 00:00:00', 1, 0);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `ward`
+-- Table structure for table `ward`
 --
 
 CREATE TABLE `ward` (
@@ -1157,7 +1144,7 @@ CREATE TABLE `ward` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `ward`
+-- Dumping data for table `ward`
 --
 
 INSERT INTO `ward` (`id`, `name`, `type`, `districtId`) VALUES
@@ -11774,11 +11761,11 @@ INSERT INTO `ward` (`id`, `name`, `type`, `districtId`) VALUES
 ('32248', 'Xã Đất Mũi', 'Xã', '973');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `blog`
+-- Indexes for table `blog`
 --
 ALTER TABLE `blog`
   ADD PRIMARY KEY (`id`),
@@ -11786,7 +11773,7 @@ ALTER TABLE `blog`
 ALTER TABLE `blog` ADD FULLTEXT KEY `title` (`title`);
 
 --
--- Chỉ mục cho bảng `cart`
+-- Indexes for table `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`),
@@ -11794,20 +11781,20 @@ ALTER TABLE `cart`
   ADD KEY `userId` (`userId`);
 
 --
--- Chỉ mục cho bảng `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `district`
+-- Indexes for table `district`
 --
 ALTER TABLE `district`
   ADD PRIMARY KEY (`id`),
   ADD KEY `provinceId` (`provinceId`);
 
 --
--- Chỉ mục cho bảng `messages`
+-- Indexes for table `messages`
 --
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`),
@@ -11815,14 +11802,14 @@ ALTER TABLE `messages`
   ADD KEY `toUserId` (`toUserId`);
 
 --
--- Chỉ mục cho bảng `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`userId`);
 
 --
--- Chỉ mục cho bảng `order_details`
+-- Indexes for table `order_details`
 --
 ALTER TABLE `order_details`
   ADD PRIMARY KEY (`id`),
@@ -11830,7 +11817,7 @@ ALTER TABLE `order_details`
   ADD KEY `product_id` (`productId`);
 
 --
--- Chỉ mục cho bảng `productfavorite`
+-- Indexes for table `productfavorite`
 --
 ALTER TABLE `productfavorite`
   ADD PRIMARY KEY (`id`),
@@ -11838,7 +11825,7 @@ ALTER TABLE `productfavorite`
   ADD KEY `userId` (`userId`);
 
 --
--- Chỉ mục cho bảng `productrating`
+-- Indexes for table `productrating`
 --
 ALTER TABLE `productrating`
   ADD PRIMARY KEY (`id`),
@@ -11846,7 +11833,7 @@ ALTER TABLE `productrating`
   ADD KEY `userId` (`userId`);
 
 --
--- Chỉ mục cho bảng `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
@@ -11855,13 +11842,13 @@ ALTER TABLE `products`
 ALTER TABLE `products` ADD FULLTEXT KEY `name` (`name`);
 
 --
--- Chỉ mục cho bảng `province`
+-- Indexes for table `province`
 --
 ALTER TABLE `province`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `question`
+-- Indexes for table `question`
 --
 ALTER TABLE `question`
   ADD PRIMARY KEY (`id`),
@@ -11869,13 +11856,13 @@ ALTER TABLE `question`
   ADD KEY `productId` (`productId`);
 
 --
--- Chỉ mục cho bảng `role`
+-- Indexes for table `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -11885,7 +11872,7 @@ ALTER TABLE `users`
   ADD KEY `wardId` (`wardId`);
 
 --
--- Chỉ mục cho bảng `user_voucher`
+-- Indexes for table `user_voucher`
 --
 ALTER TABLE `user_voucher`
   ADD PRIMARY KEY (`id`),
@@ -11893,173 +11880,173 @@ ALTER TABLE `user_voucher`
   ADD KEY `voucherId` (`voucherId`);
 
 --
--- Chỉ mục cho bảng `vouchers`
+-- Indexes for table `vouchers`
 --
 ALTER TABLE `vouchers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `ward`
+-- Indexes for table `ward`
 --
 ALTER TABLE `ward`
   ADD PRIMARY KEY (`id`),
   ADD KEY `districtId` (`districtId`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `blog`
+-- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT cho bảng `cart`
+-- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
--- AUTO_INCREMENT cho bảng `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT cho bảng `messages`
+-- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 
 --
--- AUTO_INCREMENT cho bảng `order_details`
+-- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
 
 --
--- AUTO_INCREMENT cho bảng `productfavorite`
+-- AUTO_INCREMENT for table `productfavorite`
 --
 ALTER TABLE `productfavorite`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT cho bảng `productrating`
+-- AUTO_INCREMENT for table `productrating`
 --
 ALTER TABLE `productrating`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT cho bảng `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
--- AUTO_INCREMENT cho bảng `question`
+-- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `role`
+-- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
--- AUTO_INCREMENT cho bảng `user_voucher`
+-- AUTO_INCREMENT for table `user_voucher`
 --
 ALTER TABLE `user_voucher`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT cho bảng `vouchers`
+-- AUTO_INCREMENT for table `vouchers`
 --
 ALTER TABLE `vouchers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `blog`
+-- Constraints for table `blog`
 --
 ALTER TABLE `blog`
   ADD CONSTRAINT `blog_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`);
 
 --
--- Các ràng buộc cho bảng `cart`
+-- Constraints for table `cart`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`productId`) REFERENCES `products` (`id`),
   ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `users` (`id`);
 
 --
--- Các ràng buộc cho bảng `district`
+-- Constraints for table `district`
 --
 ALTER TABLE `district`
   ADD CONSTRAINT `district_ibfk_1` FOREIGN KEY (`provinceId`) REFERENCES `province` (`id`);
 
 --
--- Các ràng buộc cho bảng `messages`
+-- Constraints for table `messages`
 --
 ALTER TABLE `messages`
   ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`fromUserId`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`toUserId`) REFERENCES `users` (`id`);
 
 --
--- Các ràng buộc cho bảng `orders`
+-- Constraints for table `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`);
 
 --
--- Các ràng buộc cho bảng `order_details`
+-- Constraints for table `order_details`
 --
 ALTER TABLE `order_details`
   ADD CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`productId`) REFERENCES `products` (`id`),
   ADD CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`orderId`) REFERENCES `orders` (`id`);
 
 --
--- Các ràng buộc cho bảng `productfavorite`
+-- Constraints for table `productfavorite`
 --
 ALTER TABLE `productfavorite`
   ADD CONSTRAINT `productfavorite_ibfk_1` FOREIGN KEY (`productId`) REFERENCES `products` (`id`),
   ADD CONSTRAINT `productfavorite_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `users` (`id`);
 
 --
--- Các ràng buộc cho bảng `productrating`
+-- Constraints for table `productrating`
 --
 ALTER TABLE `productrating`
   ADD CONSTRAINT `productrating_ibfk_1` FOREIGN KEY (`productId`) REFERENCES `products` (`id`),
   ADD CONSTRAINT `productrating_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `users` (`id`);
 
 --
--- Các ràng buộc cho bảng `products`
+-- Constraints for table `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`cateId`) REFERENCES `categories` (`id`),
   ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`createdBy`) REFERENCES `users` (`id`);
 
 --
--- Các ràng buộc cho bảng `question`
+-- Constraints for table `question`
 --
 ALTER TABLE `question`
   ADD CONSTRAINT `question_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `question_ibfk_2` FOREIGN KEY (`productId`) REFERENCES `products` (`id`);
 
 --
--- Các ràng buộc cho bảng `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`),
@@ -12068,21 +12055,21 @@ ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_4` FOREIGN KEY (`wardId`) REFERENCES `ward` (`id`);
 
 --
--- Các ràng buộc cho bảng `user_voucher`
+-- Constraints for table `user_voucher`
 --
 ALTER TABLE `user_voucher`
   ADD CONSTRAINT `user_voucher_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `user_voucher_ibfk_2` FOREIGN KEY (`voucherId`) REFERENCES `vouchers` (`id`);
 
 --
--- Các ràng buộc cho bảng `ward`
+-- Constraints for table `ward`
 --
 ALTER TABLE `ward`
   ADD CONSTRAINT `ward_ibfk_1` FOREIGN KEY (`districtId`) REFERENCES `district` (`id`);
 
 DELIMITER $$
 --
--- Sự kiện
+-- Events
 --
 CREATE DEFINER=`root`@`localhost` EVENT `deleteCartEvent` ON SCHEDULE EVERY 1 MINUTE STARTS '2022-03-23 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM cart WHERE DATE_ADD(timeStamp, INTERVAL 90 DAY) >= CURRENT_DATE()$$
 

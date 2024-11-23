@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 14, 2023 lúc 06:37 AM
--- Phiên bản máy phục vụ: 10.4.22-MariaDB
--- Phiên bản PHP: 7.4.27
+-- Thời gian đã tạo: Th5 02, 2023 lúc 05:09 PM
+-- Phiên bản máy phục vụ: 10.4.27-MariaDB
+-- Phiên bản PHP: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,12 +18,15 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `blog`
+-- Cơ sở dữ liệu: `web_dong_ho`
 --
+
 -- --------------------------------------------------------
+
 --
 -- Cấu trúc bảng cho bảng `blog`
 --
+
 CREATE TABLE `blog` (
   `id` int(11) NOT NULL,
   `title` varchar(500) NOT NULL,
@@ -33,14 +36,14 @@ CREATE TABLE `blog` (
   `createdDate` datetime NOT NULL,
   `lastUpdated` datetime NOT NULL,
   `views` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `blog`
 --
 
 INSERT INTO `blog` (`id`, `title`, `content`, `image`, `userId`, `createdDate`, `lastUpdated`, `views`) VALUES
-(7, 'dd', '<p>Viết nội dung tại đddddddddddây...</p>', 'bf103d5052.png', 1, '2023-04-12 22:07:44', '2023-04-12 22:07:44', 0);
+(8, 'Một hai Ba', '<p>Viết nội dunmmmmmg tại đây...</p>', '94273f5813.jpg', 1, '2023-04-29 20:41:28', '2023-04-29 20:41:28', 0);
 
 -- --------------------------------------------------------
 
@@ -56,7 +59,15 @@ CREATE TABLE `cart` (
   `quantity` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `timeStamp` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `cart`
+--
+
+INSERT INTO `cart` (`id`, `productId`, `productName`, `productPrice`, `quantity`, `userId`, `timeStamp`) VALUES
+(147, 5, 'CASIO MTP-1302D-7BVDF', '1347000', 1, 2, '2023-05-01 15:31:12'),
+(148, 4, 'ROTARY GB90141/06', '11480000', 8, 2, '2023-05-01 15:31:12');
 
 -- --------------------------------------------------------
 
@@ -68,7 +79,7 @@ CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `categories`
@@ -77,10 +88,8 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`id`, `name`, `status`) VALUES
 (1, 'Đồng hồ nam', 1),
 (2, 'Đồng hồ nữ', 1),
-(3, 'Đồng hồ cặp', 1),  
-(4, 'Đồng hồ treo tường', 1),
-(24, 'Bảo Quốc', 1),
-(25, 'Anthony', 1);
+(3, 'Đồng hồ cặp', 1),
+(4, 'Đồng hồ treo tường', 1);
 
 -- --------------------------------------------------------
 
@@ -89,11 +98,11 @@ INSERT INTO `categories` (`id`, `name`, `status`) VALUES
 --
 
 CREATE TABLE `district` (
-  `id` varchar(5) CHARACTER SET utf8 NOT NULL,
-  `name` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `type` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `provinceId` varchar(5) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `type` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `provinceId` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `district`
@@ -817,7 +826,7 @@ CREATE TABLE `messages` (
   `fromUserId` int(11) NOT NULL,
   `toUserId` int(11) NOT NULL,
   `content` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -836,15 +845,21 @@ CREATE TABLE `orders` (
   `payDate` datetime DEFAULT NULL,
   `total` decimal(10,0) NOT NULL,
   `discount` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `orders`
 --
 
 INSERT INTO `orders` (`id`, `userId`, `createdDate`, `receivedDate`, `status`, `paymentStatus`, `paymentMethod`, `payDate`, `total`, `discount`) VALUES
-('DH-B3KJLTL5AW', 158, '2023-04-13', '2023-04-13', 'received', 1, 'COD', '2023-04-13 10:22:48', '3214000', 0),
-('DH-MGG2HPYD1J', 171, '2023-04-13', '2023-04-13', 'received', 1, 'COD', '2023-04-13 23:49:53', '22', 0);
+('DH-0EXLTAV1GO', 2, '2023-04-19', '2023-04-19', 'received', 1, 'COD', '2023-04-19 16:24:52', '1607000', 0),
+('DH-1LYTAV10RK', 2, '2023-04-30', NULL, 'processing', 0, 'COD', NULL, '16812000', 0),
+('DH-7P4M6EPZ2Q', 2, '2023-04-30', NULL, 'processing', 0, 'COD', NULL, '3229000', 20),
+('DH-IBHGQ1SZ28', 2, '2023-04-30', NULL, 'processing', 0, 'COD', NULL, '11480000', 0),
+('DH-LFQ56HXUJS', 2, '2023-04-30', NULL, 'processing', 0, 'COD', NULL, '11955000', 0),
+('DH-LH2RYM1I1G', 2, '2023-04-30', NULL, 'processing', 0, 'COD', NULL, '11480000', 0),
+('DH-PE1D95ELQV', 2, '2023-05-01', NULL, 'processing', 0, 'COD', NULL, '11480000', 0),
+('DH-WPV8LFVY69', 2, '2023-04-30', NULL, 'processing', 0, 'COD', NULL, '11480000', 90);
 
 -- --------------------------------------------------------
 
@@ -859,14 +874,23 @@ CREATE TABLE `order_details` (
   `qty` int(11) NOT NULL,
   `productPrice` decimal(10,0) NOT NULL,
   `productName` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `order_details`
 --
 
 INSERT INTO `order_details` (`id`, `orderId`, `productId`, `qty`, `productPrice`, `productName`) VALUES
-(181, 'DH-MGG2HPYD1J', 124, 1, '22', 'Bảo Quốc');
+(182, 'DH-0EXLTAV1GO', 2, 1, '1607000', 'Đồng hồ CASIO'),
+(183, 'DH-7P4M6EPZ2Q', 3, 1, '3229000', 'CASIO EFV-550L-1AVUDF'),
+(184, 'DH-1LYTAV10RK', 4, 1, '11480000', 'ROTARY GB90141/06'),
+(185, 'DH-1LYTAV10RK', 6, 1, '3985000', 'CITIZEN AK5000-54A'),
+(186, 'DH-1LYTAV10RK', 5, 1, '1347000', 'CASIO MTP-1302D-7BVDF'),
+(187, 'DH-LH2RYM1I1G', 4, 1, '11480000', 'ROTARY GB90141/06'),
+(188, 'DH-LFQ56HXUJS', 6, 3, '3985000', 'CITIZEN AK5000-54A'),
+(189, 'DH-IBHGQ1SZ28', 4, 1, '11480000', 'ROTARY GB90141/06'),
+(190, 'DH-WPV8LFVY69', 4, 1, '11480000', 'ROTARY GB90141/06'),
+(191, 'DH-PE1D95ELQV', 4, 1, '11480000', 'ROTARY GB90141/06');
 
 -- --------------------------------------------------------
 
@@ -878,7 +902,7 @@ CREATE TABLE `productfavorite` (
   `id` int(11) NOT NULL,
   `productId` int(11) NOT NULL,
   `userId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -895,16 +919,14 @@ CREATE TABLE `productrating` (
   `reply` text NOT NULL,
   `createdDate` datetime NOT NULL DEFAULT current_timestamp(),
   `repliedDate` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `productrating`
 --
 
 INSERT INTO `productrating` (`id`, `productId`, `userId`, `star`, `content`, `reply`, `createdDate`, `repliedDate`) VALUES
-(1, 1, 1, 1, 'sản phẩm tốt', 'cảm ơn bạn', '2023-03-09 09:30:09', '2022-05-09 10:46:09'),
-(10, 1, 158, 4, 'hay', 'cảm ơn bạn', '2023-04-13 10:23:41', '2023-04-13 23:50:49'),
-(11, 124, 171, 5, 'Hay quá bạn ơi, quá xịn', 'xịn', '2023-04-13 23:50:09', '2023-04-13 23:50:39');
+(12, 2, 2, 5, 'Sản phẩm tốt', '', '2023-04-19 16:25:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -922,7 +944,7 @@ CREATE TABLE `products` (
   `createdDate` date NOT NULL,
   `cateId` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
-  `mota` varchar(255) NOT NULL,
+  `des` varchar(500) NOT NULL,
   `trademark` varchar(55) NOT NULL,
   `faceshape` varchar(55) NOT NULL,
   `material` varchar(55) NOT NULL,
@@ -932,18 +954,20 @@ CREATE TABLE `products` (
   `soldCount` int(11) NOT NULL,
   `image2` varchar(100) NOT NULL,
   `image3` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `originalPrice`, `promotionPrice`, `image`, `createdBy`, `createdDate`, `cateId`, `qty`, `mota`, `trademark`, `faceshape`, `material`, `color`, `energyused`, `status`, `soldCount`, `image2`, `image3`) VALUES
-(1, 'CASIO MTP-1370D-7A2VDF', '1607000', '1607000', 'MTP-1370D-7A2VDF.jpg', 1, '2023-02-10', 1, 17, 'Từ những chiếc kim có kích thước lớn cho đến dây đeo bằng thép bóng bẩy, Alliance cân bằng một cách chuyên nghiệp giữa độ chính xác và tính thẩm mỹ. Cung cấp khả năng đọc rõ ràng và chất lượng do Thụy Sĩ sản xuất, đây chính là một chiếc đồng hồ nâng tầm c', 'Casio', 'Tròn', 'Thép không gỉ', 'Vàng, Trắng', 'Cơ', 1, 3, 'CASIO-MTP-1370D-7A2VDF-1-699x699.jpg', 'CASIO-MTP-1370D-7A2VDF-0-699x699.jpg'),
-(2, 'Đồng hồ CASIO', '1607000', '1607000', 'MTP-1370D-7A2VDF.jpg', 1, '2023-02-10', 1, 17, 'Từ những chiếc kim có kích thước lớn cho đến dây đeo bằng thép bóng bẩy, Alliance cân bằng một cách chuyên nghiệp giữa độ chính xác và tính thẩm mỹ. Cung cấp khả năng đọc rõ ràng và chất lượng do Thụy Sĩ sản xuất, đây chính là một chiếc đồng hồ nâng tầm c', 'Casio', 'Tròn', 'Thép không gỉ', 'Trắng', 'Cơ', 1, 3, 'CASIO-MTP-1370D-7A2VDF-1-699x699.jpg', 'CASIO-MTP-1370D-7A2VDF-0-699x699.jpg'),
-(124, 'Bảo Quốc', '222222', '22', '5f03fca768.jpg', 1, '2023-04-13', 1, 221, '', '22', '2', '2', '2', '2', 1, 1, '331ce1a314.jpg', '5cd87517ce.jpg'),
-(125, 'ĐỒNG HỒ NAM XỊN', '22222', '22', 'db61f90c29.jpg', 1, '2023-04-13', 3, 222, '', '22', '2', '2', '2', '2', 1, 0, 'eafb3dd5ff.jpg', '1c82a0874f.jpg'),
-(126, 'Anthony', '100000', '2000', '613298437b.jpg', 1, '2023-04-13', 1, 1, '', '1', '1', '1', '1', '1', 1, 0, '13941a9b0b.jpg', '92ab3f6d7f.jpg');
+INSERT INTO `products` (`id`, `name`, `originalPrice`, `promotionPrice`, `image`, `createdBy`, `createdDate`, `cateId`, `qty`, `des`, `trademark`, `faceshape`, `material`, `color`, `energyused`, `status`, `soldCount`, `image2`, `image3`) VALUES
+(1, 'CASIO MTP-1370D-7A2VDF', '1607000', '1207000', 'MTP-1370D-7A2VDF.jpg', 1, '2023-02-10', 1, 17, 'Đồng hồ nam Casio MTP-1370D-7A2VDF thanh lịch với kiểu dáng nam tính mặt đồng hồ nền trắng cùng chữ số vạch mạ vàng, chất liệu được làm từ thép không gỉ, 3 kim vàng, còn có 1 lịch ngày và 1 lịch thứ.', 'Casio', 'Tròn', 'Thép không gỉ', 'Trắng', 'Cơ', 1, 3, 'CASIO-MTP-1370D-7A2VDF-1-699x699.jpg', 'CASIO-MTP-1370D-7A2VDF-0-699x699.jpg'),
+(2, 'ORIENT OPEN HEART RA-AR0001S10B', '11760000', '10760000', '36_RA-AR0001S10B.jpg', 1, '2023-02-10', 1, 19, 'Mẫu Orient RA-AR0001S10B thiết kế đặc trưng Open Heart với ô chân kính lộ ra 1 phần của bô máy cơ tạo nên vẻ độc đáo trước mặt kính Sapphire.', 'Orient', 'Tròn', 'Thép không gỉ', 'Trắng', 'Cơ', 1, 4, 'ORIENT-RA-AR0001S10B-2-2.jpg', 'ORIENT-RA-AR0001S10B-3-2.jpg'),
+(3, 'CASIO EFV-550L-1AVUDF', '3529000', '3229000', '68_EFV-550L-1AVUDF-1.jpg', 1, '2023-02-10', 1, 19, 'Mẫu Casio EFV-550L-1AVUDF mang đến cho phái mạnh vẻ ngoài lịch lãm nhưng cũng không kém phần trẻ trung đặc trưng thuộc dòng Edifice với kiểu dáng đồng hồ 6 kim đi kèm tính năng đo thời gian Chronograph.', 'Casio', 'Tròn', 'Dây da', 'Đen', 'Cơ', 1, 5, 'CASIO-EFV-550L-1AVUDF-3.jpg', 'CASIO-EFV-550L-1AVUDF-1.jpg'),
+(4, 'ROTARY GB90141/06', '11480000', '11480000', 'GB90141-06.jpg', 1, '2023-02-10', 1, 15, 'Đồng hồ Rotary GB90141/06 có mặt số tròn tinh tế với vỏ mạ bạc bao quanh nền số màu trắng trang nhã, kim chỉ màu xanh độc đáo cùng vạch số La Mã màu đen nổi bật, ô lịch ngày vị trí 3h, dây đeo kim loại với điểm nhấn màu vàng mang lại nét sang trọng lịch lãm dành cho phái mạnh.', 'Rotary', 'Tròn', 'Thép không gỉ', 'Trắng', 'Cơ', 1, 5, 'ROTARY-GB90141_06-1.jpg', 'ROTARY-GB90141_06-2.jpg'),
+(5, 'CASIO MTP-1302D-7BVDF', '1347000', '1347000', 'MTP-1302D-7BVDF.jpg', 1, '2023-02-10', 1, 19, 'Đồng hồ Casio MTP-1302D-7BVDF với niềng kim loại được tạo khía tinh tế, quanh nền trắng mặt số, kim chỉ phủ phản quang và chữ số được phủ màu đen nổi bật.', 'Casio', 'Tròn', 'Thép không gỉ', 'Trắng', 'Cơ', 1, 5, 'CASIO-MTP-1302D-7BVDF-3.jpg', 'CASIO-MTP-1302D-7BVDF-1.jpg'),
+(6, 'CITIZEN AK5000-54A', '3985000', '3985000', 'AK5000-54A.jpg', 1, '2023-02-10', 1, 16, 'Đồng hồ Casio MTP-1302D-7BVDF với niềng kim loại được tạo khía tinh tế, quanh nền trắng mặt số, kim chỉ phủ phản quang và chữ số được phủ màu đen nổi bật.', 'Casio', 'Tròn', 'Thép không gỉ', 'Trắng', 'Cơ', 1, 5, 'AK5000-54A_1.jpg', 'AK5000-54A-1.jpg'),
+(127, 'Admin1', '100000', '10000', 'c0b7b935c5.jpg', 1, '2023-04-30', 1, 11, '', '1', '1', '1', '1', '1', 1, 0, '066e050f37.jpg', 'ddafadf66b.jpg');
 
 -- --------------------------------------------------------
 
@@ -952,11 +976,11 @@ INSERT INTO `products` (`id`, `name`, `originalPrice`, `promotionPrice`, `image`
 --
 
 CREATE TABLE `province` (
-  `id` varchar(5) CHARACTER SET utf8 NOT NULL,
-  `name` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `type` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `id` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `type` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `slug` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=COMPACT;
 
 --
 -- Đang đổ dữ liệu cho bảng `province`
@@ -1030,29 +1054,13 @@ INSERT INTO `province` (`id`, `name`, `type`, `slug`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `question`
---
-
-CREATE TABLE `question` (
-  `id` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
-  `content` varchar(500) NOT NULL,
-  `reply` varchar(500) NOT NULL,
-  `createdDate` datetime NOT NULL,
-  `repliedDate` datetime DEFAULT NULL,
-  `productId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Cấu trúc bảng cho bảng `role`
 --
 
 CREATE TABLE `role` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `role`
@@ -1080,10 +1088,10 @@ CREATE TABLE `users` (
   `captcha` varchar(50) NOT NULL,
   `isConfirmed` tinyint(4) NOT NULL DEFAULT 0,
   `phone` varchar(10) NOT NULL,
-  `provinceId` varchar(5) CHARACTER SET utf8 NOT NULL,
-  `districtId` varchar(5) CHARACTER SET utf8 NOT NULL,
-  `wardId` varchar(5) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `provinceId` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `districtId` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `wardId` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `users`
@@ -1091,11 +1099,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `fullName`, `email`, `dob`, `address`, `password`, `roleId`, `status`, `captcha`, `isConfirmed`, `phone`, `provinceId`, `districtId`, `wardId`) VALUES
 (1, 'Admin', 'admin@gmail.com', '2022-03-08', 'Đà Nẵng', '202cb962ac59075b964b07152d234b70', 1, 1, '930819', 1, '123456', '01', '001', '00001'),
-(2, 'Trần Ngân', 'ttn@gmail.com', '2006-02-08', 'Đà Nẵng', '202cb962ac59075b964b07152d234b70', 2, 1, '123', 1, '987654321', '92', '916', '31141'),
-(158, 'Bảo Quốc', 'baoquocnguyenkinh@gmail.com', '2000-09-20', 'Nghệ An', '202cb962ac59075b964b07152d234b70', 2, 1, '50197', 1, '', '40', '419', '16960'),
-(170, 'Bảo Anthony', 'quocb4250@gmail.com', '2000-09-22', 'Nghệ An', '202cb962ac59075b964b07152d234b70', 2, 1, '37072', 1, '', '40', '416', '16786'),
-(171, 'Anthony', 'anthony@gmail.com', '1997-09-22', 'Nghệ An', '202cb962ac59075b964b07152d234b70', 2, 1, '53698', 1, '', '40', '412', '16705'),
-(172, 'Anthony', 'user3@gmail.com', '1997-02-02', 'Nghệ An', '202cb962ac59075b964b07152d234b70', 2, 1, '30980', 1, '', '40', '412', '16696');
+(2, 'Trần Ngân', 'ttn@gmail.com', '2006-02-08', 'Đà Nẵng', '202cb962ac59075b964b07152d234b70', 2, 1, '123', 1, '987654321', '92', '916', '31141');
 
 -- --------------------------------------------------------
 
@@ -1107,14 +1111,15 @@ CREATE TABLE `user_voucher` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `voucherId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `user_voucher`
 --
 
 INSERT INTO `user_voucher` (`id`, `userId`, `voucherId`) VALUES
-(5, 1, 8);
+(6, 2, 13),
+(7, 2, 15);
 
 -- --------------------------------------------------------
 
@@ -1130,18 +1135,16 @@ CREATE TABLE `vouchers` (
   `expirationDate` datetime NOT NULL,
   `status` tinyint(1) NOT NULL,
   `usedCount` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `vouchers`
 --
 
 INSERT INTO `vouchers` (`id`, `percentDiscount`, `quantity`, `code`, `expirationDate`, `status`, `usedCount`) VALUES
-(8, 10, 100, 'CDffff', '2023-09-22 00:00:00', 1, 1),
-(9, 20, 10, 'OFF20%', '2023-04-15 00:00:00', 1, 0),
-(10, 50, 12, 'Code20', '2023-04-15 00:00:00', 1, 0),
-(11, 50, 12, 'Code20', '2023-04-15 00:00:00', 1, 0),
-(12, 30, 12, 'Code30', '2023-04-15 00:00:00', 1, 0);
+(13, 20, 10, 'ggggg', '2023-05-20 00:00:00', 1, 1),
+(14, 99, 1000, 'abcde', '2023-05-05 00:00:00', 1, -11),
+(15, 90, 12, '12345', '2023-05-05 00:00:00', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1150,11 +1153,11 @@ INSERT INTO `vouchers` (`id`, `percentDiscount`, `quantity`, `code`, `expiration
 --
 
 CREATE TABLE `ward` (
-  `id` varchar(5) CHARACTER SET utf8 NOT NULL,
-  `name` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `type` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `districtId` varchar(5) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `type` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `districtId` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `ward`
@@ -11861,14 +11864,6 @@ ALTER TABLE `province`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `question`
---
-ALTER TABLE `question`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `userId` (`userId`),
-  ADD KEY `productId` (`productId`);
-
---
 -- Chỉ mục cho bảng `role`
 --
 ALTER TABLE `role`
@@ -11913,13 +11908,13 @@ ALTER TABLE `ward`
 -- AUTO_INCREMENT cho bảng `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- AUTO_INCREMENT cho bảng `categories`
@@ -11928,16 +11923,10 @@ ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT cho bảng `messages`
---
-ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
-
---
 -- AUTO_INCREMENT cho bảng `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
 
 --
 -- AUTO_INCREMENT cho bảng `productfavorite`
@@ -11949,19 +11938,13 @@ ALTER TABLE `productfavorite`
 -- AUTO_INCREMENT cho bảng `productrating`
 --
 ALTER TABLE `productrating`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
-
---
--- AUTO_INCREMENT cho bảng `question`
---
-ALTER TABLE `question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT cho bảng `role`
@@ -11973,19 +11956,19 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
 
 --
 -- AUTO_INCREMENT cho bảng `user_voucher`
 --
 ALTER TABLE `user_voucher`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `vouchers`
 --
 ALTER TABLE `vouchers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -12009,13 +11992,6 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `district`
   ADD CONSTRAINT `district_ibfk_1` FOREIGN KEY (`provinceId`) REFERENCES `province` (`id`);
-
---
--- Các ràng buộc cho bảng `messages`
---
-ALTER TABLE `messages`
-  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`fromUserId`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`toUserId`) REFERENCES `users` (`id`);
 
 --
 -- Các ràng buộc cho bảng `orders`
@@ -12052,13 +12028,6 @@ ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`createdBy`) REFERENCES `users` (`id`);
 
 --
--- Các ràng buộc cho bảng `question`
---
-ALTER TABLE `question`
-  ADD CONSTRAINT `question_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `question_ibfk_2` FOREIGN KEY (`productId`) REFERENCES `products` (`id`);
-
---
 -- Các ràng buộc cho bảng `users`
 --
 ALTER TABLE `users`
@@ -12066,27 +12035,6 @@ ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`provinceId`) REFERENCES `province` (`id`),
   ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`districtId`) REFERENCES `district` (`id`),
   ADD CONSTRAINT `users_ibfk_4` FOREIGN KEY (`wardId`) REFERENCES `ward` (`id`);
-
---
--- Các ràng buộc cho bảng `user_voucher`
---
-ALTER TABLE `user_voucher`
-  ADD CONSTRAINT `user_voucher_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `user_voucher_ibfk_2` FOREIGN KEY (`voucherId`) REFERENCES `vouchers` (`id`);
-
---
--- Các ràng buộc cho bảng `ward`
---
-ALTER TABLE `ward`
-  ADD CONSTRAINT `ward_ibfk_1` FOREIGN KEY (`districtId`) REFERENCES `district` (`id`);
-
-DELIMITER $$
---
--- Sự kiện
---
-CREATE DEFINER=`root`@`localhost` EVENT `deleteCartEvent` ON SCHEDULE EVERY 1 MINUTE STARTS '2022-03-23 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM cart WHERE DATE_ADD(timeStamp, INTERVAL 90 DAY) >= CURRENT_DATE()$$
-
-DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

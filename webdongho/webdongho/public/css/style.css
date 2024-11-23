@@ -120,7 +120,7 @@ li {
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  background-color: rgb(204, 254, 255);
+  background-color: rgb(7, 8, 8);
   color: rgb(184, 56, 67);
   border-bottom: rgb(184, 56, 67) solid 1px;
   border-top: rgb(184, 56, 67) solid 1px;
@@ -161,7 +161,7 @@ li {
 .sub-menu {
   width: 220px;
   height: 150px;
-  background-color: rgb(204, 252, 255);
+  background-color: rgb(17, 19, 19);
   padding: 7px 0;
   position: absolute;
   display: none;
@@ -397,7 +397,7 @@ input[type=checkbox] {
 
 /*FOOTER START*/
 footer {
-  background-color: rgb(204, 254, 255);
+  background-color: rgb(7, 8, 8);
   color: rgb(27, 26, 26);
   border-bottom: rgb(184, 56, 67) solid 1px;
   border-top: rgb(184, 56, 67) solid 1px;

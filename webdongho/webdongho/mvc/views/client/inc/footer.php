@@ -41,8 +41,8 @@
         <h3>NHÓM 10 STORE </h3>
 		<ul>
             <li>Phạm Tiến Thưởng 03-02-2003</li>
-			<li>Đặng Thị Thanh Hằng</li>
-			<li>Hoàng Thị Thu Phương</li>
+			<li>Đặng Thị Thanh Hằng 24-10-2003</li>
+			<li>Hoàng Thị Thu Phương 22-07-2003</li>
 		</ul>
     </div>
     <div class="right">
